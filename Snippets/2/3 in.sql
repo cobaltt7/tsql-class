@@ -1,0 +1,29 @@
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+USE AP;
+
+SELECT
+	*
+FROM
+	Terms
+WHERE TermsId IN (1, 3, 4);
+
+SELECT
+	VendorState
+FROM
+	Vendors
+WHERE VendorState NOT IN ('CA', 'NV', 'OR')
+ORDER BY VendorState;
+
+SELECT
+	*
+FROM
+	Invoices
+WHERE VendorId IN (SELECT
+	VendorID
+FROM
+	Vendors
+WHERE VendorState = 'CA')
+ORDER BY VendorId;

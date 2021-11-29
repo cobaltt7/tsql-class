@@ -1,0 +1,21 @@
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+USE AP;
+
+SELECT
+	VendorID,
+	AVG(InvoiceTotal) AS AverageInvoiceAmount
+FROM
+	AP..Invoices
+GROUP BY VendorID
+HAVING AVG(InvoiceTotal) > 2000
+ORDER BY AverageInvoiceAmount DESC;
+
+SELECT
+	VendorID,
+	COUNT(*) AS InvoiceQty
+FROM
+	AP..Invoices
+GROUP BY VendorID;

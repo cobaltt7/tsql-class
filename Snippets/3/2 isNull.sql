@@ -1,0 +1,41 @@
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+
+USE Examples;
+
+SELECT
+	*
+FROM
+	NullSample;
+
+SELECT
+	*
+FROM
+	NullSample
+WHERE InvoiceTotal = NULL;
+
+SELECT
+	*
+FROM
+	NullSample
+WHERE InvoiceTotal IS NULL;
+
+SELECT
+	*
+FROM
+	NullSample
+WHERE InvoiceTotal IS NOT NULL;
+
+SELECT
+	*
+FROM
+	NullSample
+WHERE InvoiceTotal = 0;
+
+SELECT
+	*
+FROM
+	NullSample
+WHERE InvoiceTotal != 0;
