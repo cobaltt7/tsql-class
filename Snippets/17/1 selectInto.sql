@@ -12,7 +12,7 @@ FROM
 
 SELECT
 	*
-INTO InvoiceCopy
+INTO AP..InvoiceCopy
 FROM
 	AP..Invoices;
 
