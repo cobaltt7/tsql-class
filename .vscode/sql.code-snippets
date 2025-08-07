@@ -15,8 +15,8 @@
 			"SET ANSI_NULLS ON;",
 			"SET QUOTED_IDENTIFIER ON;",
 			"USE AP;",
-			"\n"
+			"\n",
 		],
-		"description": "Boilerplate code"
-	}
+		"description": "Boilerplate code",
+	},
 }
