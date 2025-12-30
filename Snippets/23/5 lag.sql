@@ -1,0 +1,15 @@
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+USE AP;
+
+SELECT
+	RepID,
+	SalesYear,
+	SalesTotal AS CurrentSales,
+	LAG(SalesTotal, 1, 0) OVER (PARTITION BY RepID ORDER BY SalesYear)
+AS LastSales,
+	SalesTotal - Lag(SalesTotal, 1, 0) OVER (PARTITION BY REPID ORDER BY SalesYear) AS Change
+FROM
+	Examples..SalesTotals

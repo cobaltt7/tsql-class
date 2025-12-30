@@ -1,0 +1,32 @@
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+USE AP;
+
+SELECT
+	ROW_NUMBER() OVER (ORDER BY VendorName) AS RowNumber,
+	VendorName
+FROM
+	AP..Vendors;
+
+SELECT
+	ROW_NUMBER() OVER (PARTITION BY VendorState ORDER BY VendorName) AS RowNumber,
+	VendorName,
+	VendorState
+FROM
+	AP..Vendors;
+
+SELECT
+	RANK() OVER (ORDER BY InvoiceTotal) AS Rank,
+	DENSE_RANK() OVER (ORDER BY InvoiceTotal) AS DenseRank,
+	InvoiceTotal,
+	InvoiceNumber
+FROM
+	AP..Invoices;
+
+SELECT TermsDescription,
+NTILE(2) OVER (OVER BY TermsID) AS Tile2,
+NTILE(3) OVER (OVER BY TermsID) AS Tile3,
+NTILE(4) OVER (OVER BY TermsID) AS Tile4
+FROM Terms;

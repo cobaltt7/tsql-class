@@ -2,5 +2,5 @@
 .git
 .vscode/**
 !.vscode/*.code-snippets
-~$Presentation1.pptx
+~$*.pptx
 
